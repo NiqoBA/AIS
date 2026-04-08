@@ -50,13 +50,13 @@ export function AuroraNav() {
 
         <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3">
           <Link
-            href="/soon#contact"
+            href="/contact"
             className="hidden rounded-full border border-[#111111] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#111111] transition hover:bg-black/[0.04] sm:inline-flex sm:px-5 sm:text-[11px]"
           >
             Iniciar sesión
           </Link>
           <Link
-            href="/soon#contact"
+            href="/contact"
             className="inline-flex rounded-full bg-black px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-black/90 sm:px-5 sm:text-[11px]"
           >
             Contacto
