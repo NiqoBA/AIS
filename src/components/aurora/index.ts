@@ -1,0 +1,10 @@
+export { AuroraNav } from "./AuroraNav";
+export { AuroraHero } from "./AuroraHero";
+export { AuroraWonderkid } from "./AuroraWonderkid";
+export { AuroraSectionBelly } from "./AuroraSectionBelly";
+export { AuroraGlobalStrip } from "./AuroraGlobalStrip";
+export { AuroraHowItWorks } from "./AuroraHowItWorks";
+export { AuroraPlatform } from "./AuroraPlatform";
+export { AuroraTestimonials } from "./AuroraTestimonials";
+export { AuroraFooter } from "./AuroraFooter";
+export { AuroraPostHowItWorks } from "./AuroraPostHowItWorks";

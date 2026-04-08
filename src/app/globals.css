@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-aurora-bg: #050a0e;
+  --color-aurora-panel: #050a0e;
+  --color-aurora-cyan: #00f2ff;
+  --color-aurora-cyan-dim: #00c8d4;
+  --color-aurora-green: #39ff14;
+  --color-aurora-amber: #ff9d00;
+  --color-aurora-muted: #8ba4b4;
+  --color-hero: #050a0e;
+  --color-accent: #00f2ff;
+  --color-accent-soft: #39ff14;
+  --color-canvas: #f1f5f9;
+  --color-surface: #050a0e;
+  --color-ink: #f0f4f8;
+  --color-muted: #8ba4b4;
+}
+
+/* Trazados tipo PCB (ortogonales, vías, finales abiertos) — ~9% opacidad en el SVG */
+:root {
+  --aurora-pcb-bg: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20320%20320%22%20width%3D%22320%22%20height%3D%22320%22%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%230ea5e9%22%20stroke-width%3D%221%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22miter%22%20opacity%3D%220.09%22%3E%0A%3Cpath%20d%3D%22M0%2038h142v62h118M168%200v44h-58v212M24%200v96h188v72M0%20128h76v104h244M52%200v52h216v268M248%200v156h-92v164M0%20248h268v72M296%200v288h-76v32M108%2088h64v56h-112v88M0%20208h48v-52h176M280%2084v88h-40v-40M88%200v28h132v308M264%20124v48M36%20276v-36M312%20196h-48M156%20200h52M200%2016v40M132%20176h56v-68h92M0%2068h28v-28M228%20228h92v-52M64%20320v-44h80%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20fill%3D%22%230ea5e9%22%20opacity%3D%220.09%22%3E%0A%3Ccircle%20cx%3D%22142%22%20cy%3D%2238%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%2244%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%2276%22%20cy%3D%22128%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%22156%22%20cy%3D%22156%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%22108%22%20cy%3D%2288%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%22224%22%20cy%3D%22156%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%22248%22%20cy%3D%22248%22%20r%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%22264%22%20cy%3D%22124%22%20r%3D%222.2%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%230ea5e9%22%20stroke-width%3D%221%22%20opacity%3D%220.09%22%3E%0A%3Ccircle%20cx%3D%22188%22%20cy%3D%2296%22%20r%3D%222.4%22%2F%3E%3Ccircle%20cx%3D%2236%22%20cy%3D%22240%22%20r%3D%222.4%22%2F%3E%3Ccircle%20cx%3D%22312%22%20cy%3D%22196%22%20r%3D%222.4%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Base oscuro estilo mockup AURORA */
+.aurora-root {
+  background-color: var(--color-aurora-bg);
+  color: #e8f4f8;
+}
+
+/* Fondo landing: base oscura (el patrón PCB vive solo en el Hero) */
+.aurora-circuit {
+  background-color: var(--color-aurora-bg);
+}
+
+/* Secciones oscuras: mismo tono liso */
+.aurora-dark-surface {
+  background-color: var(--color-aurora-bg);
+}
+
+/* Título hero: frase central cyan → teal (mock referencia) */
+.gradient-text-aurora-hero {
+  background: linear-gradient(92deg, #22d3ee 0%, #5eead4 45%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-aurora {
+  background: linear-gradient(90deg, #00f2ff, #39ff14);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* CTA píldora: teal / cyan → azul (navbar + hero) */
+.btn-aurora-cta-pill {
+  background: linear-gradient(92deg, #0e7490 0%, #0891b2 38%, #06b6d4 72%, #0ea5e9 100%);
+  color: #f8fafc;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 4px 24px rgba(8, 145, 178, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition:
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-aurora-cta-pill:hover {
+  filter: brightness(1.07);
+  box-shadow:
+    0 6px 32px rgba(6, 182, 212, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.glass-aurora {
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 242, 255, 0.25);
+  background: rgba(5, 10, 14, 0.72);
+  box-shadow:
+    0 0 40px -10px rgba(0, 242, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.btn-aurora-gradient {
+  background: linear-gradient(90deg, #00c8d4, #39ff14);
+  color: #050a0e;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-aurora-gradient:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 28px rgba(0, 242, 255, 0.35);
+}
+
+.btn-aurora-outline {
+  border: 1px solid rgba(0, 242, 255, 0.55);
+  color: #00f2ff;
+  background: rgba(0, 242, 255, 0.05);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-aurora-outline:hover {
+  border-color: #39ff14;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+/* Curva inferior tipo “panza” entre secciones */
+.aurora-belly-fill {
+  color: var(--color-aurora-panel);
+}
+
+@keyframes aisFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aisFadeCard {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ais-fade-up {
+  animation: aisFadeUp 0.6s ease-out both;
+}
+
+.ais-fade-card {
+  animation: aisFadeCard 0.6s ease-out 0.2s both;
+}
+
+.ais-fade-card-2 {
+  animation: aisFadeCard 0.6s ease-out 0.32s both;
+}
+
+.ais-fade-card-3 {
+  animation: aisFadeCard 0.6s ease-out 0.44s both;
+}
