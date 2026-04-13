@@ -15,7 +15,7 @@ export function AuroraHero() {
     >
       <div className="relative mx-auto min-h-[calc(100vh-5rem)] w-full max-w-[1700px] px-3 pb-4 sm:px-5 lg:px-8">
         <div
-          className="relative isolate h-full min-h-[min(820px,92vh)] overflow-hidden rounded-[28px] border border-black/[0.07] shadow-[0_18px_65px_-35px_rgba(0,0,0,0.22)]"
+          className="relative isolate h-full min-h-0 overflow-hidden rounded-[28px] border border-black/[0.07] shadow-[0_18px_65px_-35px_rgba(0,0,0,0.22)] lg:min-h-[min(820px,92vh)]"
           style={{ backgroundColor: PANEL_BG }}
         >
           {/* Marca de agua: un poco más oscura que el fondo para leerse en claro */}
@@ -31,8 +31,23 @@ export function AuroraHero() {
             </span>
           </div>
 
-          {/* Figura: centrada, anclada abajo, sin recortar; multiply sobre el mismo tono BG */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[4%] z-[2] sm:top-[3%] lg:top-[2%]">
+          {/* Móvil / tablet: figura apoyada en el borde inferior del panel, crece hacia arriba */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] flex justify-center lg:hidden">
+            <div className="relative h-[min(58vh,560px)] w-[min(92vw,460px)] max-w-full sm:h-[min(56vh,580px)]">
+              <Image
+                src={heroPlayer}
+                alt="Jugador AIS"
+                fill
+                priority
+                quality={92}
+                sizes="(max-width: 1023px) 92vw, 0"
+                className="object-contain object-bottom mix-blend-multiply"
+              />
+            </div>
+          </div>
+
+          {/* Desktop: figura a la derecha, anclada abajo */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[4%] z-[2] hidden sm:top-[3%] lg:top-[2%] lg:block">
             <div className="relative mx-auto h-full w-full max-w-[min(680px,56vw)] min-h-[320px]">
               <Image
                 src={heroPlayer}
@@ -46,8 +61,8 @@ export function AuroraHero() {
             </div>
           </div>
 
-          <div className="relative z-20 grid min-h-[min(820px,92vh)] grid-cols-1 p-7 sm:p-9 lg:grid-cols-[52%_48%] lg:p-12">
-            <div className="ais-fade-up relative max-w-[640px] self-start pt-2 lg:pt-6">
+          <div className="relative z-20 flex min-h-0 flex-col p-7 pb-8 max-lg:min-h-[min(calc(100dvh-5.5rem),880px)] sm:p-9 lg:min-h-0 lg:grid lg:min-h-[min(820px,92vh)] lg:grid-cols-[52%_48%] lg:p-12">
+            <div className="ais-fade-up relative max-w-[640px] self-start pt-2 max-lg:pb-5 sm:max-lg:pb-6 lg:pb-0 lg:pt-6">
               <p className="text-sm text-black/55">
                 |{" "}
                 <span className="font-bold uppercase">A</span>
